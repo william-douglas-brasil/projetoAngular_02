@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="card-body">
+    <h5 class="card-title">Cadastro de Empresas</h5>
+    <hr />
+    <!--mostra mensagem de successo ou erro na tela-->
+    <div *ngIf="mensagem_sucesso" class="alert alert-success">
+      Sucesso: <strong>{{mensagem_sucesso}}</strong>
+    </div>
+
+    <div *ngIf="mensagem_erro" class="alert alert-danger">
+      Erro: <strong>{{mensagem_erro}}</strong>
+    </div>
+
+    <!--formulario de cadastro-->
+    <form class="forms mt-4" [formGroup]="formCadastro" (ngSubmit)="onSubmit()">
+
+      <img src="\assets\img\Forms-cuate.png" class="img-form" alt="imagem de formulario">
+
+      <div class="row">
+        <div class="col-md-10">
+          <label><strong>Nome fantasia da empresa:</strong></label><br>
+          <input type="text" class="form-control" formControlName="nomeFantasia" />
+
+          <div class="text-danger" *ngIf="form.nomeFantasia.touched && form.nomeFantasia.invalid">
+
+            <div *ngIf="form.nomeFantasia.errors.required">
+              Por Favor, informe o nome fantasia da empresa.
+            </div>
+
+            <div *ngIf="form.nomeFantasia.errors.minlength">
+              Por Favor, informe no mínimo 10 caracteres.
+            </div>
+
+            <div *ngIf="form.nomeFantasia.errors.maxlength">
+              Por Favor, informe no mínimo 150 caracteres.
+            </div>
+
+          </div>
+
+          <label><strong>Razão Social:</strong></label>
+          <input type="text" class="form-control" formControlName="razaoSocial" />
+
+          <div class="text-danger" *ngIf="form.razaoSocial.touched && form.razaoSocial.invalid">
+
+            <div *ngIf="form.razaoSocial.errors.required">
+              Por Favor, informe a razão Social da empresa.
+            </div>
+
+            <div *ngIf="form.razaoSocial.errors.minlength">
+              Por Favor, informe no mínimo 10 caracteres.
+            </div>
+
+            <div *ngIf="form.razaoSocial.errors.maxlength">
+              Por Favor, informe no mínimo 150 caracteres.
+            </div>
+
+          </div>
+
+          <label><strong>CNPJ:</strong></label>
+          <input type="text" class="form-control" formControlName="cnpj" />
+
+          <div class="text-danger" *ngIf="form.cnpj.touched && form.cnpj.invalid">
+
+            <div *ngIf="form.cnpj.errors.required">
+              Por Favor, informe o CNPJ da empresa.
+            </div>
+
+            <div *ngIf="form.cnpj.errors.minlength">
+              Por Favor, informe no mínimo 14 caracteres.
+            </div>
+
+            <div *ngIf="form.cnpj.errors.maxlength">
+              Por Favor, informe no máximo 20 caracteres.
+            </div>
+
+          </div>
+
+          &nbsp;
+
+          <div class="col-md-10">
+            <input type="submit" value="Cadastar Empresa" class="btn btn-success" [disabled]="!formCadastro.valid" />
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

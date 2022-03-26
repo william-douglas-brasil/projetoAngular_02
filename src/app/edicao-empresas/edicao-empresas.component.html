@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="card-body">
+    <h5 class="card-title">Edição de Empresa</h5>
+    <hr />
+
+    <!--mostra mensagem de successo ou erro na tela-->
+    <div *ngIf="mensagem_sucesso" class="alert alert-success">
+      Sucesso: <strong>{{mensagem_sucesso}}</strong>
+    </div>
+
+    <div *ngIf="mensagem_erro" class="alert alert-danger">
+      Erro: <strong>{{mensagem_erro}}</strong>
+    </div>
+
+    <!--formulario de cadastro-->
+    <form class="forms mt-4" [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+
+      <!--campo oculto-->
+      <input type="hidden" formControlName="idEmpresa" />
+
+      <img src="\assets\img\Forms-cuate.png" class="img-form" alt="imagem de formulario">
+
+      <div class="row">
+        <div class="col-md-10">
+          <label><strong>Nome fantasia da empresa:</strong></label><br>
+          <input type="text" class="form-control" formControlName="nomeFantasia" />
+
+          <div class="text-danger" *ngIf="form.nomeFantasia.touched && form.nomeFantasia.invalid">
+
+            <div *ngIf="form.nomeFantasia.errors.required">
+              Por Favor, informe o nome fantasia da empresa.
+            </div>
+
+            <div *ngIf="form.nomeFantasia.errors.minlength">
+              Por Favor, informe no mínimo 10 caracteres.
+            </div>
+
+            <div *ngIf="form.nomeFantasia.errors.maxlength">
+              Por Favor, informe no mínimo 150 caracteres.
+            </div>
+
+          </div>
+
+          <br />
+
+          <label><strong>Razão Social:</strong></label>
+          <input type="text" class="form-control" formControlName="razaoSocial" readonly />
+
+          <br />
+
+          <label><strong>CNPJ:</strong></label>
+          <input type="text" class="form-control" formControlName="cnpj" readonly />
+
+
+        </div>
+
+        <br />
+
+        <div class="col-md-10 mt-3">
+          <input type="submit" value="Salvar Alterações" class="btn btn-primary" [disabled]="!formEdicao.valid" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

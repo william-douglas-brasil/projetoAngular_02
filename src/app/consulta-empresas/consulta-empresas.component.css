@@ -1,0 +1,41 @@
+.img-form {
+  display: inline-block;
+  height: 130px;
+  width: 130px;
+  float: left;
+  margin-top: -2%;
+}
+
+.mb-3 {
+  display: flex;
+  float: right;
+  background-color: #d5eeee;
+  border: solid 1px;
+  border-radius: 15px;
+  margin-top: -5%;
+
+}
+
+.mb-3 input {
+
+  float: left;
+  background-color: transparent;
+  padding-left: 1px;
+  font-style: italic;
+  font-size: 15px;
+  border-radius: 0 15px 15px 0;
+
+}
+
+.mb-3 label {
+
+  float: left;
+  color: azure;
+  background-color: #010c0c;
+  padding-left: 1px;
+  font-style: italic;
+  padding: 4px;
+  border: solid 1px;
+  border-radius: 15px 0 0 15px;
+
+}
